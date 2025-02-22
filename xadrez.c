@@ -11,7 +11,8 @@ do
     printf("1. Bispo \n");
     printf("2. Torre \n");
     printf("3. Rainha \n");
-    printf("4. Sair\n");
+    printf("4. Cavalo\n");
+    printf("5. Sair\n");
     printf("Opção: ");
     scanf("%d", &peca);
 
@@ -148,18 +149,56 @@ case 3:
                     printf("Rainha andou 1 casa para direita! \n");
                 } break;
             }
-break;
+    break;
 
-case 4:
+case 4: {
+
+int movimento1, movimento2, i = 1, j = 1;
+char direcao1[20], direcao2[20];
+
+    printf("### Lembre-se que o cavalo só pode se mover fazendo um movimento que resulta em um L (deve totalizar 3 casas) ### \n");
+    printf("Digite quantas casas deseja andar no primeiro movimento: ");
+    scanf("%d", &movimento1);
+    printf("\nEscolha a direção na qual o cavalo se movimentará no primeiro movimento (Esquerda, Direita, Cima ou Baixo): ");
+    scanf("%s", direcao1);
+    getchar();
+
+    printf("\nDigite quantas casas deseja andar no segundo movimento: ");
+    scanf("%d", &movimento2);
+    printf("\nEscolha a direção na qual o cavalo se movimentará no segundo movimento (Esquerda, Direita, Cima ou Baixo): ");
+    scanf("%s", direcao2);
+    getchar();
+
+        if ((movimento1 == 2 && movimento2 == 1) || (movimento1 == 1 && movimento2 == 2))
+        {
+
+            for(i = 1; i <= movimento2; i++)
+            {
+                while (j <= movimento1)
+                {
+                printf("Cavalo se moveu 1 casa para %s!\n", direcao1);
+                j++;
+                }
+            printf("Cavalo se moveu 1 casa(s) para %s!\n", direcao2);
+             }
+        } else
+        {
+        printf("Movimento Inválido! O Cavalo DEVE andar 3 casas em formato de L, qualquer valor a mais ou a menos será invalidado.\n");
+        }
+    break;
+    }
+case 5:
     printf("Saindo...\n");
     break;
+
 default:
-    printf("Opção Inválida!");
+    printf("Opção Inválida!\n");
     break;
+
 }
-
-
 } while (peca < 4);
+
+return 0;
 
 }
 
